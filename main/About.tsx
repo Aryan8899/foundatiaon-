@@ -20,7 +20,7 @@ interface FocusArea {
   id: string;
   title: string;
   description: string;
-  image: string; // put images in /public/images/about/
+  image: string; // put images in /public/
   icon: LucideIcon;
   iconBg: string; // full class names so Tailwind can detect them
 }
@@ -30,7 +30,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "women",
     title: "Women Empowerment",
     description: "Skills, awareness and livelihood opportunities",
-    image: "/images/about/women.jpg",
+    image: "/women.png",
     icon: HeartHandshake,
     iconBg: "bg-pink-600",
   },
@@ -38,7 +38,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "education",
     title: "Education & Digital Literacy",
     description: "Access to education and digital skills",
-    image: "/images/about/education.jpg",
+    image: "/education.png",
     icon: Laptop,
     iconBg: "bg-blue-600",
   },
@@ -46,7 +46,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "health",
     title: "Healthcare & Hygiene",
     description: "Health awareness and essential support",
-    image: "/images/about/health.jpg",
+    image: "/heath.png",
     icon: HeartPulse,
     iconBg: "bg-red-500",
   },
@@ -54,7 +54,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "rural",
     title: "Rural Development",
     description: "Community welfare and development",
-    image: "/images/about/rural.jpg",
+    image: "/rural.png",
     icon: Sprout,
     iconBg: "bg-green-600",
   },
@@ -62,7 +62,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "finance",
     title: "Financial Inclusion",
     description: "Awareness and access to digital financial services",
-    image: "/images/about/finance.jpg",
+    image: "/finance.png",
     icon: Wallet,
     iconBg: "bg-orange-500",
   },
@@ -70,7 +70,7 @@ const FOCUS_AREAS: FocusArea[] = [
     id: "youth",
     title: "Youth & Skill Development",
     description: "Creating opportunities for a brighter future",
-    image: "/images/about/youth.jpg",
+    image: "/youth.png",
     icon: GraduationCap,
     iconBg: "bg-violet-600",
   },
@@ -155,26 +155,33 @@ function CountUp({ end, suffix = "", duration = 2000, className }: CountUpProps)
 }
 
 /* ---------- Pieces ---------- */
+/* On xl screens sizes scale with screen width (vw) so the section
+   looks like the reference banner at any desktop size. */
 
 function FocusCard({ area }: { area: FocusArea }) {
   const Icon = area.icon;
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-100">
+    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-100 xl:rounded-[1vw]">
       <img
         src={area.image}
         alt={area.title}
         loading="lazy"
-        className="h-36 w-full object-cover sm:h-40"
+        className="aspect-square w-full object-cover"
       />
-      <div className="relative flex-1 px-4 pb-5 pt-9">
+      <div className="relative flex-1 px-4 pb-5 pt-9 xl:px-[0.9vw] xl:pb-[1.2vw] xl:pt-[2.2vw]">
         <span
           className={`absolute -top-5 left-4 flex h-10 w-10 items-center justify-center rounded-full
-            text-white ring-4 ring-white ${area.iconBg}`}
+            text-white ring-4 ring-white ${area.iconBg}
+            xl:-top-[1.3vw] xl:left-[0.9vw] xl:h-[2.3vw] xl:w-[2.3vw]`}
         >
-          <Icon size={20} aria-hidden="true" />
+          <Icon aria-hidden="true" className="h-5 w-5 xl:h-[1.1vw] xl:w-[1.1vw]" />
         </span>
-        <h3 className="text-[15px] font-bold leading-snug text-brand-navy">{area.title}</h3>
-        <p className="mt-1.5 text-xs leading-relaxed text-slate-600">{area.description}</p>
+        <h3 className="text-[15px] font-bold leading-snug text-brand-navy xl:text-[0.9vw]">
+          {area.title}
+        </h3>
+        <p className="mt-1.5 text-xs leading-relaxed text-slate-600 xl:mt-[0.4vw] xl:text-[0.7vw]">
+          {area.description}
+        </p>
       </div>
     </article>
   );
@@ -187,13 +194,17 @@ function StatItem({ stat, isFirst }: { stat: Stat; isFirst: boolean }) {
       className={`flex flex-col items-center px-4 py-2 text-center text-white
         ${isFirst ? "" : "lg:border-l lg:border-white/20"}`}
     >
-      <Icon size={36} strokeWidth={1.5} aria-hidden="true" />
+      <Icon
+        strokeWidth={1.5}
+        aria-hidden="true"
+        className="h-9 w-9 xl:h-[2.3vw] xl:w-[2.3vw]"
+      />
       <CountUp
         end={stat.value}
         suffix={stat.suffix}
-        className="mt-3 text-3xl font-bold tabular-nums sm:text-4xl"
+        className="mt-3 text-3xl font-bold tabular-nums sm:text-4xl xl:mt-[0.6vw] xl:text-[2.2vw]"
       />
-      <p className="mt-1 text-sm text-white/85">{stat.label}</p>
+      <p className="mt-1 text-sm text-white/85 xl:text-[0.85vw]">{stat.label}</p>
     </div>
   );
 }
@@ -205,20 +216,21 @@ export default function About() {
     <section id="about" aria-labelledby="about-heading">
       {/* Intro + focus areas */}
       <div className="bg-stone-50">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:px-8 xl:grid-cols-[minmax(0,340px)_minmax(0,1fr)] xl:items-center">
+        <div className="mx-auto grid max-w-[1700px] gap-10 px-4 py-14 sm:px-6 lg:px-8 xl:grid-cols-[22vw_minmax(0,1fr)] xl:items-center xl:gap-[2.5vw] xl:px-[3vw] xl:py-[1.8vw]">
           {/* Text */}
           <div>
-            <p className="text-sm font-bold tracking-wide">
+            <p className="text-sm font-bold tracking-wide xl:text-[0.8vw]">
               <span className="text-orange-500">ABOUT</span>{" "}
               <span className="text-brand-navy">SAMBHAV FOUNDATION</span>
             </p>
             <h2
               id="about-heading"
-              className="mt-3 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl"
+              className="mt-3 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl xl:mt-[0.6vw] xl:text-[2.1vw]"
             >
-              Together, We Make Possibilities Happen
+              Together, We Make
+              <br className="hidden xl:block" /> Possibilities Happen
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-slate-700">
+            <p className="mt-5 text-sm leading-relaxed text-slate-700 xl:mt-[1.2vw] xl:text-[0.85vw]">
               Sambhav Foundation works at the grassroots to create positive and sustainable change
               in underserved communities. We focus on real needs, practical solutions and long-term
               empowerment for women, children and families.
@@ -228,15 +240,16 @@ export default function About() {
               className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-navy px-7 py-3.5
                 text-[15px] font-semibold text-white shadow-md transition-colors hover:bg-blue-950
                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-                focus-visible:outline-brand-navy"
+                focus-visible:outline-brand-navy
+                xl:mt-[1.8vw] xl:rounded-[0.8vw] xl:px-[2vw] xl:py-[0.9vw] xl:text-[0.9vw]"
             >
               Know More About Us
-              <ArrowRight size={18} aria-hidden="true" />
+              <ArrowRight aria-hidden="true" className="h-[18px] w-[18px] xl:h-[1.1vw] xl:w-[1.1vw]" />
             </a>
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-2 gap-4 pt-6 sm:grid-cols-3 xl:grid-cols-6">
+          <div className="grid grid-cols-2 gap-4 pt-6 sm:grid-cols-3 xl:grid-cols-6 xl:gap-[0.9vw] xl:pt-0">
             {FOCUS_AREAS.map((area) => (
               <FocusCard key={area.id} area={area} />
             ))}
@@ -251,17 +264,17 @@ export default function About() {
           src="/images/odisha-map.png"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-6 right-0 hidden h-[120%] w-auto opacity-10 lg:block"
+          className="pointer-events-none absolute -bottom-6 right-0 hidden h-[120%] w-auto opacity-20 lg:block"
         />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[3fr_2fr] lg:px-8">
+        <div className="relative mx-auto grid max-w-[1700px] items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[3fr_2fr] lg:px-8 xl:px-[3vw] xl:py-[1.6vw]">
           <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">
             {STATS.map((stat, i) => (
               <StatItem key={stat.id} stat={stat} isFirst={i === 0} />
             ))}
           </div>
 
-          <blockquote className="text-center font-serif text-lg italic leading-relaxed text-white lg:border-l lg:border-white/20 lg:pl-10 lg:text-left">
+          <blockquote className="text-center font-serif text-lg italic leading-relaxed text-white lg:border-l lg:border-white/20 lg:pl-10 lg:text-left xl:pl-[3vw] xl:text-[1.05vw]">
             <p>“Empowering individuals</p>
             <p>Strengthening communities</p>
             <p>Creating a brighter and more inclusive Odisha.”</p>

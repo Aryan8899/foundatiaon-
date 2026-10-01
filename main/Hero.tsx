@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import {
   ArrowRight,
   Users,
@@ -11,10 +10,6 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
-
-// Handwritten font for the "Odisha" word in the sticker
-const script = Caveat({ subsets: ["latin"], weight: ["700"] });
-
 
 /* ---------- Data ---------- */
 
@@ -35,25 +30,6 @@ const FOCUS_AREAS: FocusArea[] = [
 
 /* ---------- Small presentational pieces ---------- */
 
-function StickerBadge() {
-  return (
-    <div
-      className="absolute right-4 top-6 hidden -rotate-6 bg-white px-8 py-5 text-center shadow-xl
-        md:block lg:right-12 lg:top-8
-        [clip-path:polygon(2%_6%,18%_0,40%_4%,62%_0,84%_5%,100%_2%,98%_40%,100%_72%,97%_100%,70%_96%,44%_100%,20%_97%,0_100%,3%_65%,0_32%)]"
-    >
-      <p className="text-lg font-extrabold leading-tight text-brand-navy">
-        Empowered
-        <br />
-        Communities
-        <br />
-        Stronger
-      </p>
-      <p className={`${script.className} text-3xl leading-none text-brand-orange`}>Odisha</p>
-    </div>
-  );
-}
-
 function FocusItem({ area }: { area: FocusArea }) {
   const Icon = area.icon;
   return (
@@ -70,24 +46,26 @@ function FocusItem({ area }: { area: FocusArea }) {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative isolate flex min-h-[620px] overflow-hidden text-white lg:h-[600px]">
-      {/* Background photo — save your image as /public/images/hero.jpg */}
+    <section
+      id="home"
+      className="relative isolate flex min-h-[620px] overflow-hidden text-white lg:h-[760px]"
+    >
+      {/* Background photo (sticker is already part of this image) — /public/hero.png */}
       <Image
-        src="/images/hero.jpg"
+        src="/hero1.png"
         alt="A woman reading a book with three smiling girls"
         fill
         priority
         sizes="100vw"
-        className="-z-20 object-cover object-[65%_center]"
+        className="-z-20 object-cover object-[70%_20%]"
       />
 
       {/* Dark overlays keep the text readable */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-black/70 to-transparent" />
 
-      <StickerBadge />
-
-      <div className="mx-auto flex w-full max-w-7xl flex-col justify-between px-4 pb-6 pt-12 sm:px-6 lg:px-8 lg:pt-14">
+      {/* max-w-none + lg:px-[10vw] = content starts further left */}
+      <div className="mx-auto flex w-full max-w-none flex-col justify-between px-4 pb-6 pt-16 sm:px-6 lg:px-[10vw] lg:pt-28">
         {/* Text content */}
         <div className="max-w-xl">
           <p className="text-base font-semibold uppercase tracking-wide sm:text-lg">
@@ -99,7 +77,7 @@ export default function Hero() {
           <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] sm:text-6xl">
             Building a
             <br />
-            <span className="text-brand-orange">Better Tomorrow.</span>
+            <span className="text-[#F7941D]">Better Tomorrow.</span>
           </h1>
 
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/90 sm:text-base">
@@ -111,8 +89,8 @@ export default function Hero() {
           <div className="mt-7 flex flex-wrap gap-4">
             <Link
               href="#work"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-7 py-3 text-sm font-semibold
-                transition-colors hover:bg-brand-orange-dark"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#F7941D] px-7 py-3 text-sm font-semibold
+                transition-colors hover:bg-[#E07F0A]"
             >
               Our Work
               <ArrowRight size={16} aria-hidden="true" />

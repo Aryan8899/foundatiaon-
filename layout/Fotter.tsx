@@ -102,21 +102,26 @@ const linkClass =
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-brand-navy text-white">
-      {/* Optional faded temple outline: /public/images/temple-outline.png */}
-      <img
-        src="/images/temple-outline.png"
+<footer className="relative overflow-hidden bg-[#0a2a5e] text-white">      {/* Optional faded temple outline: /public/images/temple-outline.png */}
+      {/* <img
+        src="/logo.jpeg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-2 right-4 hidden h-40 w-auto opacity-40 lg:block"
-      />
+      /> */}
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.7fr_1fr_1.2fr_1.5fr_1.1fr] lg:px-8">
         {/* Brand */}
         <div className="sm:col-span-2 lg:col-span-1">
           <a href="#home" aria-label="Sambhav Foundation home" className="inline-block">
             {/* White version of the full logo lockup: /public/logo-white.png */}
-            <img src="/logo-white.png" alt="Sambhav Foundation" className="h-14 w-auto md:h-16" />
+            <a href="#home" aria-label="Sambhav Foundation home" className="inline-block">
+  <img
+    src="/logo.jpeg"
+    alt="Sambhav Foundation"
+    className="h-14 w-auto md:h-16"
+  />
+</a>
           </a>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/90">
             Working towards an inclusive and empowered society through education, healthcare,
