@@ -61,7 +61,7 @@ export default function Hero() {
       />
 
       {/* Dark overlays keep the text readable */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-plum-dark/80 via-black/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-black/70 to-transparent" />
 
       {/* max-w-none + lg:px-[10vw] = content starts further left */}
@@ -77,7 +77,7 @@ export default function Hero() {
           <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] sm:text-6xl">
             Building a
             <br />
-            <span className="text-[#F7941D]">Better Tomorrow.</span>
+            <span className="text-brand-gold-light">Better Tomorrow.</span>
           </h1>
 
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/90 sm:text-base">
@@ -89,8 +89,8 @@ export default function Hero() {
           <div className="mt-7 flex flex-wrap gap-4">
             <Link
               href="#work"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#F7941D] px-7 py-3 text-sm font-semibold
-                transition-colors hover:bg-[#E07F0A]"
+              className="inline-flex items-center gap-2 rounded-lg bg-brand-rose px-7 py-3 text-sm font-semibold
+                transition-colors hover:bg-brand-rose-hover"
             >
               Our Work
               <ArrowRight size={16} aria-hidden="true" />

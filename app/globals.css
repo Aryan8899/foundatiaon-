@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+/* Palette taken from the Sambhav Foundation logo */
 @theme {
-  --color-brand-navy: #00468B;
+  --color-brand-plum: #5b2252;       /* main brand colour (logo wordmark) */
+  --color-brand-plum-dark: #3f1738;  /* footer, hover states */
+  --color-brand-rose: #d6577a;       /* primary buttons, eyebrows (logo pink) */
+  --color-brand-rose-hover: #bd3f63;
+  --color-brand-gold: #c09040;       /* "FOUNDATION" gold */
+  --color-brand-gold-light: #e9b95f;
+  --color-brand-sage: #6f8c5a;       /* logo leaves */
+  --color-brand-blush: #fbf4f7;      /* soft section background */
 }
 @theme inline {
   --font-sans: var(--font-poppins);
+  --font-display: var(--font-playfair);
 }

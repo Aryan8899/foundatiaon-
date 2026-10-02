@@ -54,7 +54,7 @@ const INVOLVE_CARDS: InvolveCard[] = [
     href: "#donate",
     icon: Heart,
     card: "bg-pink-100 hover:bg-pink-200/70",
-    text: "text-pink-600",
+    text: "text-brand-rose",
   },
   {
     id: "volunteer",
@@ -62,8 +62,8 @@ const INVOLVE_CARDS: InvolveCard[] = [
     description: "Bring your time, skills and experience.",
     href: "#volunteer",
     icon: Users,
-    card: "bg-blue-100 hover:bg-blue-200/70",
-    text: "text-blue-700",
+    card: "bg-purple-100 hover:bg-purple-200/70",
+    text: "text-brand-plum",
   },
   {
     id: "partner",
@@ -72,7 +72,7 @@ const INVOLVE_CARDS: InvolveCard[] = [
     href: "#partner",
     icon: Handshake,
     card: "bg-green-100 hover:bg-green-200/70",
-    text: "text-green-700",
+    text: "text-brand-sage",
   },
 ];
 
@@ -98,10 +98,10 @@ const STORIES: Story[] = [
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-4 xl:gap-[1vw]">
-      <p className="shrink-0 text-xs font-bold tracking-wide text-orange-600 xl:text-[0.65vw]">
+      <p className="shrink-0 text-xs font-bold tracking-wide text-brand-rose xl:text-[0.65vw]">
         {children}
       </p>
-      <span className="hidden h-px flex-1 bg-orange-200 sm:block" aria-hidden="true" />
+      <span className="hidden h-px flex-1 bg-pink-200 sm:block" aria-hidden="true" />
     </div>
   );
 }
@@ -130,7 +130,7 @@ function FeaturedInitiative() {
           <Eyebrow>FEATURED INITIATIVE</Eyebrow>
           <h2
             id="featured-heading"
-            className="mt-3 text-2xl font-extrabold leading-tight text-brand-navy sm:text-3xl xl:mt-[0.6vw] xl:text-[1.7vw]"
+            className="mt-3 text-2xl font-extrabold leading-tight text-brand-plum sm:text-3xl xl:mt-[0.6vw] xl:text-[1.7vw]"
           >
             Community Welfare &amp;
             <br className="hidden lg:block" /> Women Empowerment Programme
@@ -138,11 +138,11 @@ function FeaturedInitiative() {
 
           <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-slate-800 xl:mt-[0.9vw] xl:gap-x-[2vw] xl:text-[0.8vw]">
             <span className="inline-flex items-center gap-2 xl:gap-[0.5vw]">
-              <Calendar aria-hidden="true" className="h-5 w-5 text-brand-navy xl:h-[1.2vw] xl:w-[1.2vw]" />
+              <Calendar aria-hidden="true" className="h-5 w-5 text-brand-plum xl:h-[1.2vw] xl:w-[1.2vw]" />
               {FEATURED.date}
             </span>
             <span className="inline-flex items-center gap-2 xl:gap-[0.5vw]">
-              <MapPin aria-hidden="true" className="h-5 w-5 text-brand-navy xl:h-[1.2vw] xl:w-[1.2vw]" />
+              <MapPin aria-hidden="true" className="h-5 w-5 text-brand-plum xl:h-[1.2vw] xl:w-[1.2vw]" />
               {FEATURED.location}
             </span>
           </div>
@@ -153,10 +153,10 @@ function FeaturedInitiative() {
 
           <a
             href={FEATURED.href}
-            className="mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-brand-navy px-6 py-3
-              text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-950
+            className="mt-6 inline-flex w-fit items-center gap-2 rounded-xl bg-brand-plum px-6 py-3
+              text-sm font-semibold text-white shadow-md transition-colors hover:bg-brand-plum-dark
               focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-              focus-visible:outline-brand-navy
+              focus-visible:outline-brand-plum
               xl:mt-[1.2vw] xl:gap-[0.5vw] xl:rounded-[0.6vw] xl:px-[1.4vw] xl:py-[0.7vw] xl:text-[0.8vw]"
           >
             Read More About This Event
@@ -172,8 +172,8 @@ function FeaturedInitiative() {
             className="h-full w-full object-cover object-top lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
           />
           <div
-            className="absolute bottom-4 left-4 max-w-[75%] rounded-xl bg-yellow-400 px-4 py-3
-              text-brand-navy shadow-lg lg:left-8 lg:-rotate-2
+            className="absolute bottom-4 left-4 max-w-[75%] rounded-xl bg-brand-gold-light px-4 py-3
+              text-brand-plum shadow-lg lg:left-8 lg:-rotate-2
               xl:bottom-[1vw] xl:left-[2vw] xl:rounded-[0.6vw] xl:px-[1vw] xl:py-[0.6vw]"
           >
             <p className="text-[11px] font-medium xl:text-[0.6vw]">{guest.prefix}</p>
@@ -198,12 +198,12 @@ function GetInvolved() {
     >
       <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] xl:gap-[1.5vw]">
         <div>
-          <p className="text-xs font-bold tracking-wide text-orange-600 xl:text-[0.65vw]">
+          <p className="text-xs font-bold tracking-wide text-brand-rose xl:text-[0.65vw]">
             GET INVOLVED
           </p>
           <h2
             id="involved-heading"
-            className="mt-2 text-3xl font-extrabold text-brand-navy sm:text-4xl xl:mt-[0.4vw] xl:text-[1.9vw] xl:leading-tight"
+            className="mt-2 text-3xl font-extrabold text-brand-plum sm:text-4xl xl:mt-[0.4vw] xl:text-[1.9vw] xl:leading-tight"
           >
             You Can Be Part of the Change
           </h2>
@@ -273,7 +273,7 @@ function Stories() {
       <div className="mt-1 flex items-end justify-between gap-4 xl:mt-[0.3vw]">
         <h2
           id="stories-heading"
-          className="text-3xl font-extrabold text-brand-navy sm:text-4xl xl:text-[1.9vw] xl:leading-tight"
+          className="text-3xl font-extrabold text-brand-plum sm:text-4xl xl:text-[1.9vw] xl:leading-tight"
         >
           Real People. Real Change.
         </h2>
@@ -281,7 +281,7 @@ function Stories() {
         <div className="flex shrink-0 items-center gap-4 xl:gap-[1vw]">
           <a
             href="#all-stories"
-            className="hidden items-center gap-1.5 text-sm font-semibold text-brand-navy hover:underline sm:inline-flex xl:gap-[0.4vw] xl:text-[0.8vw]"
+            className="hidden items-center gap-1.5 text-sm font-semibold text-brand-plum hover:underline sm:inline-flex xl:gap-[0.4vw] xl:text-[0.8vw]"
           >
             View All Stories
             <ArrowRight aria-hidden="true" className="h-[14px] w-[14px] xl:h-[0.9vw] xl:w-[0.9vw]" />
@@ -292,7 +292,7 @@ function Stories() {
               onClick={() => scroll(-1)}
               aria-label="Previous stories"
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300
-                bg-white text-brand-navy transition-colors hover:bg-slate-100
+                bg-white text-brand-plum transition-colors hover:bg-slate-100
                 xl:h-[2.2vw] xl:w-[2.2vw] xl:rounded-[0.5vw]"
             >
               <ChevronLeft className="h-[18px] w-[18px] xl:h-[1.1vw] xl:w-[1.1vw]" />
@@ -302,7 +302,7 @@ function Stories() {
               onClick={() => scroll(1)}
               aria-label="Next stories"
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300
-                bg-white text-brand-navy transition-colors hover:bg-slate-100
+                bg-white text-brand-plum transition-colors hover:bg-slate-100
                 xl:h-[2.2vw] xl:w-[2.2vw] xl:rounded-[0.5vw]"
             >
               <ChevronRight className="h-[18px] w-[18px] xl:h-[1.1vw] xl:w-[1.1vw]" />
