@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Poppins, Playfair_Display } from "next/font/google";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -9,9 +10,12 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["700", "800"],
+// Self-hosted (no Google download at build time, so deploys can't fail on it)
+const playfair = localFont({
+  src: [
+    { path: "./fonts/playfair-display-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/playfair-display-latin-800-normal.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-playfair",
   display: "swap",
 });
