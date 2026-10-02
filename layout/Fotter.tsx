@@ -101,7 +101,7 @@ function ColumnHeading({ children }: { children: React.ReactNode }) {
 }
 
 const linkClass =
-  "text-sm text-white/80 transition-colors hover:text-pink-300 focus-visible:text-pink-300 focus-visible:outline-none";
+  "text-sm text-white/80 transition-colors hover:text-orange-300 focus-visible:text-orange-300 focus-visible:outline-none";
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -113,7 +113,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 function ContactIcon({ children }: { children: ReactNode }) {
   return (
-    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-pink-300">
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-orange-300">
       {children}
     </span>
   );
@@ -125,11 +125,11 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-brand-plum-dark text-white">
+    <footer className="relative overflow-hidden bg-brand-green-dark text-white">
       {/* Brand colour strip taken from the logo */}
       <div
         aria-hidden="true"
-        className="h-1 w-full bg-gradient-to-r from-brand-plum via-brand-rose to-brand-gold"
+        className="h-1 w-full bg-gradient-to-r from-brand-green via-brand-orange to-brand-gold"
       />
 
       {/* Faded logo icon as a background watermark */}
@@ -153,11 +153,11 @@ export default function Footer() {
             >
               <img src="/logo-icon.png" alt="" aria-hidden="true" className="h-9 w-auto" />
               <span className="flex flex-col leading-none">
-                <span className="font-display text-xl font-bold tracking-tight text-brand-plum">
+                <span className="text-xl font-extrabold tracking-tight text-brand-green">
                   Sambhav
                 </span>
-                <span className="mt-1 text-[9px] font-semibold tracking-[0.42em] text-brand-gold">
-                  FOUNDATION
+                <span className="mt-0.5 text-[13px] font-light tracking-wide text-brand-green-dark">
+                  Foundation
                 </span>
               </span>
             </a>
@@ -176,8 +176,8 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={label}
                     className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white
-                      transition-colors hover:bg-brand-rose
-                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-300"
+                      transition-colors hover:bg-brand-orange
+                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-300"
                   >
                     <Icon size={18} aria-hidden="true" />
                   </a>
@@ -244,7 +244,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/15 py-4 text-xs text-white/70 sm:flex-row">
           <p>© {year} Sambhav Foundation. All rights reserved.</p>
           <p className="tracking-wide text-brand-gold-light">
-            Empowering Women <span className="mx-2 text-pink-300">•</span> Brighter Tomorrows
+            Empowering Women <span className="mx-2 text-orange-300">•</span> Brighter Tomorrows
           </p>
           <p className="flex gap-4">
             <a href="#privacy" className={linkClass}>Privacy Policy</a>

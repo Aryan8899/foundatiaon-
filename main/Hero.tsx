@@ -61,7 +61,7 @@ export default function Hero() {
       />
 
       {/* Dark overlays keep the text readable */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-plum-dark/80 via-black/25 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-green-dark/80 via-black/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-black/70 to-transparent" />
 
       {/* max-w-none + lg:px-[10vw] = content starts further left */}
@@ -89,8 +89,8 @@ export default function Hero() {
           <div className="mt-7 flex flex-wrap gap-4">
             <Link
               href="#work"
-              className="inline-flex items-center gap-2 rounded-lg bg-brand-rose px-7 py-3 text-sm font-semibold
-                transition-colors hover:bg-brand-rose-hover"
+              className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-7 py-3 text-sm font-semibold
+                transition-colors hover:bg-brand-orange-hover"
             >
               Our Work
               <ArrowRight size={16} aria-hidden="true" />

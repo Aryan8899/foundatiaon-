@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-// Self-hosted (no Google download at build time, so deploys can't fail on it)
-const playfair = localFont({
+// Self-hosted Montserrat (matches the logo). Files live in app/fonts/.
+// No Google download at build time, so deploys can't fail on it.
+const montserrat = localFont({
   src: [
-    { path: "./fonts/playfair-display-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/playfair-display-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "./fonts/montserrat-latin-300-normal.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/montserrat-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/montserrat-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/montserrat-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/montserrat-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/montserrat-latin-800-normal.woff2", weight: "800", style: "normal" },
   ],
-  variable: "--font-playfair",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -26,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
+    <html lang="en" className={montserrat.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

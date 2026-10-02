@@ -20,13 +20,13 @@ function Logo() {
         aria-hidden="true"
         className="h-12 w-auto sm:h-14 xl:h-16"
       />
-      {/* Wordmark as real text, so it stays sharp at any size */}
+      {/* Wordmark as real text (Montserrat, like the logo) */}
       <span className="flex flex-col leading-none">
-        <span className="font-display text-[26px] font-bold tracking-tight text-brand-plum sm:text-3xl xl:text-[2.1rem]">
+        <span className="text-[24px] font-extrabold tracking-tight text-brand-green sm:text-[28px] xl:text-[2rem]">
           Sambhav
         </span>
-        <span className="mt-1 text-[9px] font-semibold tracking-[0.42em] text-brand-gold sm:text-[10px] xl:text-[11px]">
-          FOUNDATION
+        <span className="mt-0.5 text-[13px] font-light tracking-wide text-brand-green-dark sm:text-[15px] xl:text-[1.2rem]">
+          Foundation
         </span>
       </span>
     </a>
@@ -47,11 +47,11 @@ function NavItem({ link, isActive, onClick }: NavItemProps) {
       aria-current={isActive ? "page" : undefined}
       className={`relative whitespace-nowrap py-2 text-[13.5px] transition-colors xl:text-[15px]
         after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:rounded-full
-        after:bg-brand-rose after:transition-transform after:duration-200
+        after:bg-brand-orange after:transition-transform after:duration-200
         ${
           isActive
-            ? "font-semibold text-brand-plum after:scale-x-100"
-            : "font-medium text-slate-700 hover:text-brand-plum after:scale-x-0 hover:after:scale-x-100"
+            ? "font-semibold text-brand-green after:scale-x-100"
+            : "font-medium text-slate-700 hover:text-brand-green after:scale-x-0 hover:after:scale-x-100"
         }`}
     >
       {link.label}
@@ -68,11 +68,11 @@ function DonateButton({ className = "inline-flex" }: DonateButtonProps) {
     <a
       href="#donate"
       className={`shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full
-        bg-gradient-to-r from-brand-rose to-brand-plum
-        px-7 py-3 text-[15px] font-semibold text-white shadow-lg shadow-brand-rose/30
-        transition hover:brightness-110 hover:shadow-brand-rose/50
+        bg-gradient-to-r from-brand-orange to-brand-green
+        px-7 py-3 text-[15px] font-semibold text-white shadow-lg shadow-brand-orange/30
+        transition hover:brightness-110 hover:shadow-brand-orange/50
         focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-        focus-visible:outline-brand-rose
+        focus-visible:outline-brand-orange
         lg:px-5 lg:py-2.5 lg:text-sm xl:px-7 xl:py-3 xl:text-[15px] ${className}`}
     >
       <Heart size={18} fill="currentColor" aria-hidden="true" />
@@ -104,17 +104,17 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 bg-white/95 backdrop-blur transition-shadow ${
-        scrolled ? "shadow-md shadow-brand-plum/10" : "border-b border-slate-100"
+        scrolled ? "shadow-md shadow-brand-green/10" : "border-b border-slate-100"
       }`}
     >
       {/* Brand colour strip taken from the logo */}
       <div
         aria-hidden="true"
-        className="h-1 w-full bg-gradient-to-r from-brand-plum via-brand-rose to-brand-gold"
+        className="h-1 w-full bg-gradient-to-r from-brand-green via-brand-orange to-brand-gold"
       />
 
-      {/* max-w-7xl keeps logo and Donate button pulled in from the screen edges (try max-w-6xl for even more, max-w-[1700px] to align with the sections) */}
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6 md:h-24 lg:gap-4 lg:px-8 xl:gap-6">
+      {/* max-w-[1500px] keeps logo and Donate button pulled in from the screen edges (smaller number = more inward, bigger = closer to the screen edges) */}
+      <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6 md:h-24 lg:gap-4 lg:px-8 xl:gap-6">
         <Logo />
 
         {/* Desktop navigation, centered between logo and button */}
@@ -142,7 +142,7 @@ export default function Header() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="rounded-lg p-2 text-brand-plum hover:bg-brand-blush lg:hidden"
+            className="rounded-lg p-2 text-brand-green hover:bg-brand-blush lg:hidden"
           >
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -164,7 +164,7 @@ export default function Header() {
                   onClick={() => handleNavClick(link.id)}
                   className={`block rounded-lg px-3 py-2.5 text-base font-medium ${
                     activeId === link.id
-                      ? "bg-brand-blush text-brand-plum"
+                      ? "bg-brand-blush text-brand-green"
                       : "text-slate-700 hover:bg-brand-blush"
                   }`}
                 >

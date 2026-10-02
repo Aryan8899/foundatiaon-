@@ -32,7 +32,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description: "Skills, awareness and livelihood opportunities",
     image: "/women.png",
     icon: HeartHandshake,
-    iconBg: "bg-brand-rose",
+    iconBg: "bg-brand-orange",
   },
   {
     id: "education",
@@ -40,7 +40,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description: "Access to education and digital skills",
     image: "/education.png",
     icon: Laptop,
-    iconBg: "bg-brand-plum",
+    iconBg: "bg-brand-green",
   },
   {
     id: "health",
@@ -48,7 +48,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description: "Health awareness and essential support",
     image: "/heath.png",
     icon: HeartPulse,
-    iconBg: "bg-pink-500",
+    iconBg: "bg-amber-600",
   },
   {
     id: "rural",
@@ -56,7 +56,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description: "Community welfare and development",
     image: "/rural.png",
     icon: Sprout,
-    iconBg: "bg-brand-sage",
+    iconBg: "bg-brand-leaf",
   },
   {
     id: "finance",
@@ -72,7 +72,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description: "Creating opportunities for a brighter future",
     image: "/youth.png",
     icon: GraduationCap,
-    iconBg: "bg-fuchsia-700",
+    iconBg: "bg-teal-700",
   },
 ];
 
@@ -176,7 +176,7 @@ function FocusCard({ area }: { area: FocusArea }) {
         >
           <Icon aria-hidden="true" className="h-5 w-5 xl:h-[1.1vw] xl:w-[1.1vw]" />
         </span>
-        <h3 className="text-[15px] font-bold leading-snug text-brand-plum xl:text-[0.9vw]">
+        <h3 className="text-[15px] font-bold leading-snug text-brand-green xl:text-[0.9vw]">
           {area.title}
         </h3>
         <p className="mt-1.5 text-xs leading-relaxed text-slate-600 xl:mt-[0.4vw] xl:text-[0.7vw]">
@@ -220,12 +220,12 @@ export default function About() {
           {/* Text */}
           <div>
             <p className="text-sm font-bold tracking-wide xl:text-[0.8vw]">
-              <span className="text-brand-rose">ABOUT</span>{" "}
-              <span className="text-brand-plum">SAMBHAV FOUNDATION</span>
+              <span className="text-brand-orange">ABOUT</span>{" "}
+              <span className="text-brand-green">SAMBHAV FOUNDATION</span>
             </p>
             <h2
               id="about-heading"
-              className="mt-3 text-3xl font-extrabold leading-tight text-brand-plum sm:text-4xl xl:mt-[0.6vw] xl:text-[2.1vw]"
+              className="mt-3 text-3xl font-extrabold leading-tight text-brand-green sm:text-4xl xl:mt-[0.6vw] xl:text-[2.1vw]"
             >
               Together, We Make
               <br className="hidden xl:block" /> Possibilities Happen
@@ -237,10 +237,10 @@ export default function About() {
             </p>
             <a
               href="#about-us"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-plum px-7 py-3.5
-                text-[15px] font-semibold text-white shadow-md transition-colors hover:bg-brand-plum-dark
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-green px-7 py-3.5
+                text-[15px] font-semibold text-white shadow-md transition-colors hover:bg-brand-green-dark
                 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-                focus-visible:outline-brand-plum
+                focus-visible:outline-brand-green
                 xl:mt-[1.8vw] xl:rounded-[0.8vw] xl:px-[2vw] xl:py-[0.9vw] xl:text-[0.9vw]"
             >
               Know More About Us
@@ -258,7 +258,7 @@ export default function About() {
       </div>
 
       {/* Impact strip */}
-      <div className="relative overflow-hidden bg-brand-plum">
+      <div className="relative overflow-hidden bg-brand-green">
         {/* Optional faded map: put it at /public/images/odisha-map.png */}
         <img
           src="/images/odisha-map.png"
