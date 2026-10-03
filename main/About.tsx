@@ -13,6 +13,7 @@ import {
   Wallet,
   type LucideIcon,
 } from "lucide-react";
+import { useLanguage } from "@/main/Languageprovider";
 
 /* ---------- Data ---------- */
 
@@ -159,12 +160,13 @@ function CountUp({ end, suffix = "", duration = 2000, className }: CountUpProps)
    looks like the reference banner at any desktop size. */
 
 function FocusCard({ area }: { area: FocusArea }) {
+  const { t } = useLanguage();
   const Icon = area.icon;
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-100 xl:rounded-[1vw]">
       <img
         src={area.image}
-        alt={area.title}
+        alt={t(`about.${area.id}.title`)}
         loading="lazy"
         className="aspect-square w-full object-cover"
       />
@@ -177,10 +179,10 @@ function FocusCard({ area }: { area: FocusArea }) {
           <Icon aria-hidden="true" className="h-5 w-5 xl:h-[1.1vw] xl:w-[1.1vw]" />
         </span>
         <h3 className="text-[15px] font-bold leading-snug text-brand-green xl:text-[0.9vw]">
-          {area.title}
+          {t(`about.${area.id}.title`)}
         </h3>
         <p className="mt-1.5 text-xs leading-relaxed text-slate-600 xl:mt-[0.4vw] xl:text-[0.7vw]">
-          {area.description}
+          {t(`about.${area.id}.desc`)}
         </p>
       </div>
     </article>
@@ -188,6 +190,7 @@ function FocusCard({ area }: { area: FocusArea }) {
 }
 
 function StatItem({ stat, isFirst }: { stat: Stat; isFirst: boolean }) {
+  const { t } = useLanguage();
   const Icon = stat.icon;
   return (
     <div
@@ -204,7 +207,7 @@ function StatItem({ stat, isFirst }: { stat: Stat; isFirst: boolean }) {
         suffix={stat.suffix}
         className="mt-3 text-3xl font-bold tabular-nums sm:text-4xl xl:mt-[0.6vw] xl:text-[2.2vw]"
       />
-      <p className="mt-1 text-sm text-white/85 xl:text-[0.85vw]">{stat.label}</p>
+      <p className="mt-1 text-sm text-white/85 xl:text-[0.85vw]">{t(`stat.${stat.id}`)}</p>
     </div>
   );
 }
@@ -212,6 +215,7 @@ function StatItem({ stat, isFirst }: { stat: Stat; isFirst: boolean }) {
 /* ---------- Section ---------- */
 
 export default function About() {
+  const { t } = useLanguage();
   return (
     <section id="about" aria-labelledby="about-heading">
       {/* Intro + focus areas */}
@@ -220,20 +224,18 @@ export default function About() {
           {/* Text */}
           <div>
             <p className="text-sm font-bold tracking-wide xl:text-[0.8vw]">
-              <span className="text-brand-orange">ABOUT</span>{" "}
-              <span className="text-brand-green">SAMBHAV FOUNDATION</span>
+              <span className="text-brand-orange">{t("about.eyebrow1")}</span>{" "}
+              <span className="text-brand-green">{t("about.eyebrow2")}</span>
             </p>
             <h2
               id="about-heading"
               className="mt-3 text-3xl font-extrabold leading-tight text-brand-green sm:text-4xl xl:mt-[0.6vw] xl:text-[2.1vw]"
             >
-              Together, We Make
-              <br className="hidden xl:block" /> Possibilities Happen
+              {t("about.title1")}
+              <br className="hidden xl:block" /> {t("about.title2")}
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-slate-700 xl:mt-[1.2vw] xl:text-[0.85vw]">
-              Sambhav Foundation works at the grassroots to create positive and sustainable change
-              in underserved communities. We focus on real needs, practical solutions and long-term
-              empowerment for women, children and families.
+              {t("about.desc")}
             </p>
             <a
               href="#about-us"
@@ -243,7 +245,7 @@ export default function About() {
                 focus-visible:outline-brand-green
                 xl:mt-[1.8vw] xl:rounded-[0.8vw] xl:px-[2vw] xl:py-[0.9vw] xl:text-[0.9vw]"
             >
-              Know More About Us
+              {t("about.cta")}
               <ArrowRight aria-hidden="true" className="h-[18px] w-[18px] xl:h-[1.1vw] xl:w-[1.1vw]" />
             </a>
           </div>
@@ -275,9 +277,9 @@ export default function About() {
           </div>
 
           <blockquote className="text-center font-serif text-lg italic leading-relaxed text-white lg:border-l lg:border-white/20 lg:pl-10 lg:text-left xl:pl-[3vw] xl:text-[1.05vw]">
-            <p>“Empowering individuals</p>
-            <p>Strengthening communities</p>
-            <p>Creating a brighter and more inclusive Odisha.”</p>
+            <p>{t("about.quote1")}</p>
+            <p>{t("about.quote2")}</p>
+            <p>{t("about.quote3")}</p>
           </blockquote>
         </div>
       </div>

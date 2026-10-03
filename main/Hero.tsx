@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,6 +12,7 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
+import { useLanguage } from "@/main/Languageprovider";
 
 /* ---------- Data ---------- */
 
@@ -31,12 +34,13 @@ const FOCUS_AREAS: FocusArea[] = [
 /* ---------- Small presentational pieces ---------- */
 
 function FocusItem({ area }: { area: FocusArea }) {
+  const { t } = useLanguage();
   const Icon = area.icon;
   return (
     <li className="flex flex-col items-center gap-2 text-center">
       <Icon size={30} strokeWidth={1.5} aria-hidden="true" />
       <span className="whitespace-pre-line text-xs font-medium leading-tight sm:text-sm">
-        {area.label}
+        {t(`hero.focus.${area.id}`)}
       </span>
     </li>
   );
@@ -45,6 +49,7 @@ function FocusItem({ area }: { area: FocusArea }) {
 /* ---------- Hero ---------- */
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section
       id="home"
@@ -69,21 +74,19 @@ export default function Hero() {
         {/* Text content */}
         <div className="max-w-xl">
           <p className="text-base font-semibold uppercase tracking-wide sm:text-lg">
-            Creating Opportunities.
+            {t("hero.tag1")}
             <br />
-            Empowering Communities.
+            {t("hero.tag2")}
           </p>
 
           <h1 className="mt-4 text-5xl font-extrabold leading-[1.05] sm:text-6xl">
-            Building a
+            {t("hero.h1a")}
             <br />
-            <span className="text-brand-gold-light">Better Tomorrow.</span>
+            <span className="text-brand-gold-light">{t("hero.h1b")}</span>
           </h1>
 
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/90 sm:text-base">
-            Sambhav Foundation is committed to creating meaningful opportunities for women,
-            children and rural communities through education, healthcare, skill development
-            and financial inclusion.
+            {t("hero.desc")}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-4">
@@ -92,7 +95,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 rounded-lg bg-brand-orange px-7 py-3 text-sm font-semibold
                 transition-colors hover:bg-brand-orange-hover"
             >
-              Our Work
+              {t("hero.cta1")}
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <Link
@@ -100,7 +103,7 @@ export default function Hero() {
               className="inline-flex items-center rounded-lg border border-white/80 px-7 py-3 text-sm font-semibold
                 transition-colors hover:bg-white/10"
             >
-              Support Our Mission
+              {t("hero.cta2")}
             </Link>
           </div>
         </div>

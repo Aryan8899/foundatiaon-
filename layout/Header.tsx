@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import { Heart, Menu, X } from "lucide-react";
 import { NAV_LINKS, type NavLink } from "../NavLinks/navLinks";
+import { useLanguage } from "@/main/Languageprovider";
+import LanguageSwitcher from "../main/languageswitcher";
 
 /* ---------- Small presentational pieces ---------- */
 
 function Logo() {
+  const { t } = useLanguage();
   return (
     <a
       href="#home"
@@ -23,10 +26,10 @@ function Logo() {
       {/* Wordmark as real text (Montserrat, like the logo) */}
       <span className="flex flex-col leading-none">
         <span className="text-[24px] font-extrabold tracking-tight text-brand-green sm:text-[28px] xl:text-[2rem]">
-          Sambhav
+          {t("brand.name")}
         </span>
         <span className="mt-0.5 text-[13px] font-light tracking-wide text-brand-green-dark sm:text-[15px] xl:text-[1.2rem]">
-          Foundation
+          {t("brand.sub")}
         </span>
       </span>
     </a>
@@ -40,6 +43,7 @@ interface NavItemProps {
 }
 
 function NavItem({ link, isActive, onClick }: NavItemProps) {
+  const { t } = useLanguage();
   return (
     <a
       href={link.href}
@@ -54,7 +58,7 @@ function NavItem({ link, isActive, onClick }: NavItemProps) {
             : "font-medium text-slate-700 hover:text-brand-green after:scale-x-0 hover:after:scale-x-100"
         }`}
     >
-      {link.label}
+      {t(`nav.${link.id}`)}
     </a>
   );
 }
@@ -64,6 +68,7 @@ interface DonateButtonProps {
 }
 
 function DonateButton({ className = "inline-flex" }: DonateButtonProps) {
+  const { t } = useLanguage();
   return (
     <a
       href="#donate"
@@ -76,7 +81,7 @@ function DonateButton({ className = "inline-flex" }: DonateButtonProps) {
         lg:px-5 lg:py-2.5 lg:text-sm xl:px-7 xl:py-3 xl:text-[15px] ${className}`}
     >
       <Heart size={18} fill="currentColor" aria-hidden="true" />
-      Donate Now
+      {t("nav.donate")}
     </a>
   );
 }
@@ -84,6 +89,7 @@ function DonateButton({ className = "inline-flex" }: DonateButtonProps) {
 /* ---------- Header ---------- */
 
 export default function Header() {
+  const { t } = useLanguage();
   const [activeId, setActiveId] = useState<string>("home");
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -108,10 +114,10 @@ export default function Header() {
       }`}
     >
       {/* Brand colour strip taken from the logo */}
-      <div
+      {/* <div
         aria-hidden="true"
         className="h-1 w-full bg-gradient-to-r from-brand-green via-brand-orange to-brand-gold"
-      />
+      /> */}
 
       {/* max-w-[1500px] keeps logo and Donate button pulled in from the screen edges (smaller number = more inward, bigger = closer to the screen edges) */}
       <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6 md:h-24 lg:gap-4 lg:px-8 xl:gap-6">
@@ -133,6 +139,7 @@ export default function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
+          <LanguageSwitcher />
           <DonateButton className="hidden sm:inline-flex" />
 
           {/* Mobile menu toggle */}
@@ -141,7 +148,7 @@ export default function Header() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? t("header.closeMenu") : t("header.openMenu")}
             className="rounded-lg p-2 text-brand-green hover:bg-brand-blush lg:hidden"
           >
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -168,7 +175,7 @@ export default function Header() {
                       : "text-slate-700 hover:bg-brand-blush"
                   }`}
                 >
-                  {link.label}
+                  {t(`nav.${link.id}`)}
                 </a>
               </li>
             ))}

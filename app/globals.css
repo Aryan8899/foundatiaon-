@@ -11,5 +11,17 @@
   --color-brand-blush: #fbf6f0;        /* soft warm section background */
 }
 @theme inline {
-  --font-sans: var(--font-montserrat);
+  /* Montserrat for English; the browser falls back to Noto Sans Oriya for Odia letters */
+  --font-sans: var(--font-montserrat), var(--font-odia), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Odia script is taller than English and its joined letters break if tracking
+   or tight line-height is applied, so relax both when the site is in Odia. */
+html[lang="or"] h1,
+html[lang="or"] h2,
+html[lang="or"] h3 {
+  line-height: 1.35;
+}
+html[lang="or"] * {
+  letter-spacing: normal !important;
 }

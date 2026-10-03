@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { NAV_LINKS } from "../NavLinks/navLinks";
+import { useLanguage } from "@/main/Languageprovider";
 
 /* ---------- Social icons (inline SVG: newer lucide-react removed brand icons) ---------- */
 
@@ -62,19 +65,20 @@ const Youtube = (props: IconProps) => (
 /* ---------- Data ---------- */
 
 const INITIATIVES = [
-  { label: "Women Empowerment", href: "#our-work" },
-  { label: "Education", href: "#our-work" },
-  { label: "Healthcare", href: "#our-work" },
-  { label: "Rural Development", href: "#our-work" },
-  { label: "Financial Inclusion", href: "#our-work" },
-  { label: "Youth Development", href: "#our-work" },
+  { id: "women", href: "#our-work" },
+  { id: "education", href: "#our-work" },
+  { id: "health", href: "#our-work" },
+  { id: "rural", href: "#our-work" },
+  { id: "finance", href: "#our-work" },
+  { id: "youth", href: "#our-work" },
 ];
 
 const CONTACT = {
-  address: "Bhandaripokhari, Bhadrak\nOdisha, India",
   email: "info@sambhavfoundation.org",
   phone: "+91 98765 43210",
 };
+
+const OFFICES = [{ id: "registered" }, { id: "branch" }];
 
 interface Social {
   label: string;
@@ -122,6 +126,7 @@ function ContactIcon({ children }: { children: ReactNode }) {
 /* ---------- Footer ---------- */
 
 export default function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -154,16 +159,15 @@ export default function Footer() {
               <img src="/logo-icon.png" alt="" aria-hidden="true" className="h-9 w-auto" />
               <span className="flex flex-col leading-none">
                 <span className="text-xl font-extrabold tracking-tight text-brand-green">
-                  Sambhav
+                  {t("brand.name")}
                 </span>
                 <span className="mt-0.5 text-[13px] font-light tracking-wide text-brand-green-dark">
-                  Foundation
+                  {t("brand.sub")}
                 </span>
               </span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/80">
-              Working towards an inclusive and empowered society through education, healthcare,
-              skill development and community welfare.
+              {t("footer.about")}
             </p>
 
             {/* Social */}
@@ -188,11 +192,11 @@ export default function Footer() {
 
           {/* Quick links */}
           <nav aria-label="Quick links">
-            <ColumnHeading>Quick Links</ColumnHeading>
+            <ColumnHeading>{t("footer.quick")}</ColumnHeading>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
-                  <FooterLink href={link.href}>{link.label}</FooterLink>
+                  <FooterLink href={link.href}>{t(`nav.${link.id}`)}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -200,11 +204,11 @@ export default function Footer() {
 
           {/* Initiatives */}
           <nav aria-label="Our initiatives">
-            <ColumnHeading>Our Initiatives</ColumnHeading>
+            <ColumnHeading>{t("footer.initiatives")}</ColumnHeading>
             <ul className="space-y-2">
               {INITIATIVES.map((item) => (
-                <li key={item.label}>
-                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                <li key={item.id}>
+                  <FooterLink href={item.href}>{t(`footer.init.${item.id}`)}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -212,14 +216,23 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <ColumnHeading>Contact Us</ColumnHeading>
+            <ColumnHeading>{t("footer.contact")}</ColumnHeading>
             <ul className="space-y-3 text-sm text-white/80">
-              <li className="flex items-start gap-3">
-                <ContactIcon>
-                  <MapPin size={16} aria-hidden="true" />
-                </ContactIcon>
-                <address className="whitespace-pre-line pt-1 not-italic">{CONTACT.address}</address>
-              </li>
+              {OFFICES.map((office) => (
+                <li key={office.id} className="flex items-start gap-3">
+                  <ContactIcon>
+                    <MapPin size={16} aria-hidden="true" />
+                  </ContactIcon>
+                  <address className="pt-0.5 not-italic">
+                    <span className="block text-xs font-semibold uppercase tracking-wide text-brand-gold-light">
+                      {t(`footer.office.${office.id}`)}
+                    </span>
+                    <span className="mt-0.5 block whitespace-pre-line">
+                      {t(`footer.address.${office.id}`)}
+                    </span>
+                  </address>
+                </li>
+              ))}
               <li className="flex items-center gap-3">
                 <ContactIcon>
                   <Mail size={16} aria-hidden="true" />
@@ -242,13 +255,13 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/15 py-4 text-xs text-white/70 sm:flex-row">
-          <p>© {year} Sambhav Foundation. All rights reserved.</p>
+          <p>{t("footer.copyright").replace("{year}", String(year))}</p>
           <p className="tracking-wide text-brand-gold-light">
-            Empowering Women <span className="mx-2 text-orange-300">•</span> Brighter Tomorrows
+            {t("footer.tag1")} <span className="mx-2 text-orange-300">•</span> {t("footer.tag2")}
           </p>
           <p className="flex gap-4">
-            <a href="#privacy" className={linkClass}>Privacy Policy</a>
-            <a href="#terms" className={linkClass}>Terms</a>
+            <a href="#privacy" className={linkClass}>{t("footer.privacy")}</a>
+            <a href="#terms" className={linkClass}>{t("footer.terms")}</a>
           </p>
         </div>
       </div>

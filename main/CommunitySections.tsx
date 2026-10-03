@@ -12,6 +12,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
+import { useLanguage } from "@/main/Languageprovider";
 
 /* On xl screens (1280px+) sizes scale with screen width (vw), so this
    section looks like the reference banner at any desktop size.
@@ -31,8 +32,7 @@ const FEATURED = {
   guest: {
     prefix: "With the support of",
     name: "Smt. Payal Singh",
-    role: "Social Worker",
-    post: "BJP Yuva Morcha Coordinator",
+    post: "State Media Coordinator Haryana BJYM",
   },
 };
 
@@ -109,6 +109,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 /* ---------- 1. Featured initiative ---------- */
 
 function FeaturedInitiative() {
+  const { t } = useLanguage();
   const { guest } = FEATURED;
   return (
     <section
@@ -127,28 +128,28 @@ function FeaturedInitiative() {
 
         {/* Text */}
         <div className="flex flex-1 flex-col justify-center px-6 py-8 lg:px-4 lg:py-6 xl:px-[1.5vw] xl:py-[1vw]">
-          <Eyebrow>FEATURED INITIATIVE</Eyebrow>
+          <Eyebrow>{t("featured.eyebrow")}</Eyebrow>
           <h2
             id="featured-heading"
             className="mt-3 text-2xl font-extrabold leading-tight text-brand-green sm:text-3xl xl:mt-[0.6vw] xl:text-[1.7vw]"
           >
-            Community Welfare &amp;
-            <br className="hidden lg:block" /> Women Empowerment Programme
+            {t("featured.title1")}
+            <br className="hidden lg:block" /> {t("featured.title2")}
           </h2>
 
           <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-slate-800 xl:mt-[0.9vw] xl:gap-x-[2vw] xl:text-[0.8vw]">
             <span className="inline-flex items-center gap-2 xl:gap-[0.5vw]">
               <Calendar aria-hidden="true" className="h-5 w-5 text-brand-green xl:h-[1.2vw] xl:w-[1.2vw]" />
-              {FEATURED.date}
+              {t("featured.date")}
             </span>
             <span className="inline-flex items-center gap-2 xl:gap-[0.5vw]">
               <MapPin aria-hidden="true" className="h-5 w-5 text-brand-green xl:h-[1.2vw] xl:w-[1.2vw]" />
-              {FEATURED.location}
+              {t("featured.location")}
             </span>
           </div>
 
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-700 xl:mt-[0.9vw] xl:max-w-[34vw] xl:text-[0.8vw]">
-            {FEATURED.description}
+            {t("featured.desc")}
           </p>
 
           <a
@@ -159,7 +160,7 @@ function FeaturedInitiative() {
               focus-visible:outline-brand-green
               xl:mt-[1.2vw] xl:gap-[0.5vw] xl:rounded-[0.6vw] xl:px-[1.4vw] xl:py-[0.7vw] xl:text-[0.8vw]"
           >
-            Read More About This Event
+            {t("featured.cta")}
             <ArrowRight aria-hidden="true" className="h-4 w-4 xl:h-[0.95vw] xl:w-[0.95vw]" />
           </a>
         </div>
@@ -168,7 +169,7 @@ function FeaturedInitiative() {
         <div className="relative h-72 lg:h-auto lg:w-[28%] lg:shrink-0">
           <img
             src={FEATURED.rightImage}
-            alt={guest.name}
+            alt={t("featured.name")}
             className="h-full w-full object-cover object-top lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
           />
           <div
@@ -176,10 +177,9 @@ function FeaturedInitiative() {
               text-brand-green shadow-lg lg:left-8 lg:-rotate-2
               xl:bottom-[1vw] xl:left-[2vw] xl:rounded-[0.6vw] xl:px-[1vw] xl:py-[0.6vw]"
           >
-            <p className="text-[11px] font-medium xl:text-[0.6vw]">{guest.prefix}</p>
-            <p className="text-lg font-extrabold leading-tight xl:text-[1.1vw]">{guest.name}</p>
-            <p className="mt-0.5 text-[11px] leading-snug xl:text-[0.6vw]">{guest.role}</p>
-            <p className="text-[11px] font-semibold leading-snug xl:text-[0.6vw]">{guest.post}</p>
+            <p className="text-[11px] font-medium xl:text-[0.6vw]">{t("featured.prefix")}</p>
+            <p className="text-lg font-extrabold leading-tight xl:text-[1.1vw]">{t("featured.name")}</p>
+            <p className="mt-0.5 text-[11px] font-semibold leading-snug xl:text-[0.6vw]">{t("featured.post")}</p>
           </div>
         </div>
       </div>
@@ -190,6 +190,7 @@ function FeaturedInitiative() {
 /* ---------- 2. Get involved ---------- */
 
 function GetInvolved() {
+  const { t } = useLanguage();
   return (
     <section
       id="get-involved"
@@ -199,16 +200,16 @@ function GetInvolved() {
       <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] xl:gap-[1.5vw]">
         <div>
           <p className="text-xs font-bold tracking-wide text-brand-orange xl:text-[0.65vw]">
-            GET INVOLVED
+            {t("involve.eyebrow")}
           </p>
           <h2
             id="involved-heading"
             className="mt-2 text-3xl font-extrabold text-brand-green sm:text-4xl xl:mt-[0.4vw] xl:text-[1.9vw] xl:leading-tight"
           >
-            You Can Be Part of the Change
+            {t("involve.title")}
           </h2>
           <p className="mt-2 max-w-md text-sm text-slate-600 xl:mt-[0.4vw] xl:max-w-none xl:text-[0.8vw]">
-            Your support can help us reach more families and create a lasting impact.
+            {t("involve.sub")}
           </p>
         </div>
 
@@ -230,10 +231,10 @@ function GetInvolved() {
                   />
                   <span>
                     <span className={`block text-base font-bold xl:text-[1vw] ${item.text}`}>
-                      {item.title}
+                      {t(`involve.${item.id}.title`)}
                     </span>
                     <span className="mt-1 block text-xs leading-relaxed text-slate-700 xl:text-[0.7vw]">
-                      {item.description}
+                      {t(`involve.${item.id}.desc`)}
                     </span>
                   </span>
                   <ArrowRight
@@ -254,6 +255,7 @@ function GetInvolved() {
 /* ---------- 3. Stories ---------- */
 
 function Stories() {
+  const { t } = useLanguage();
   const trackRef = useRef<HTMLUListElement>(null);
 
   const scroll = (direction: 1 | -1) => {
@@ -268,14 +270,14 @@ function Stories() {
       aria-labelledby="stories-heading"
       className="mx-auto max-w-[1700px] px-4 pb-14 sm:px-6 lg:px-8 xl:px-[3vw] xl:pb-[3vw]"
     >
-      <Eyebrow>STORIES FROM THE COMMUNITY</Eyebrow>
+      <Eyebrow>{t("stories.eyebrow")}</Eyebrow>
 
       <div className="mt-1 flex items-end justify-between gap-4 xl:mt-[0.3vw]">
         <h2
           id="stories-heading"
           className="text-3xl font-extrabold text-brand-green sm:text-4xl xl:text-[1.9vw] xl:leading-tight"
         >
-          Real People. Real Change.
+          {t("stories.title")}
         </h2>
 
         <div className="flex shrink-0 items-center gap-4 xl:gap-[1vw]">
@@ -283,14 +285,14 @@ function Stories() {
             href="#all-stories"
             className="hidden items-center gap-1.5 text-sm font-semibold text-brand-green hover:underline sm:inline-flex xl:gap-[0.4vw] xl:text-[0.8vw]"
           >
-            View All Stories
+            {t("stories.viewAll")}
             <ArrowRight aria-hidden="true" className="h-[14px] w-[14px] xl:h-[0.9vw] xl:w-[0.9vw]" />
           </a>
           <div className="flex gap-2 xl:gap-[0.5vw]">
             <button
               type="button"
               onClick={() => scroll(-1)}
-              aria-label="Previous stories"
+              aria-label={t("stories.prev")}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300
                 bg-white text-brand-green transition-colors hover:bg-slate-100
                 xl:h-[2.2vw] xl:w-[2.2vw] xl:rounded-[0.5vw]"
@@ -300,7 +302,7 @@ function Stories() {
             <button
               type="button"
               onClick={() => scroll(1)}
-              aria-label="Next stories"
+              aria-label={t("stories.next")}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300
                 bg-white text-brand-green transition-colors hover:bg-slate-100
                 xl:h-[2.2vw] xl:w-[2.2vw] xl:rounded-[0.5vw]"
