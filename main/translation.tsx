@@ -152,10 +152,19 @@ const en = {
   "donate.share": "Share on WhatsApp",
   "donate.shareText":
     "I'm supporting Sambhav Foundation – women empowerment, girl child education and social welfare. Join me!",
-  "footer.office.registered": "Registered Office",
-  "footer.office.branch": "Branch Office",
-  "footer.address.registered": "Gurugram, Haryana – 122001",
-  "footer.address.branch": "Bhandaripokhari, Bhadrak,\nOdisha – 756120",
+  // Gallery
+  "nav.gallery": "Gallery",
+  "gallery.eyebrow": "OUR GALLERY",
+  "gallery.title": "Moments That Matter",
+  "gallery.sub": "Photos and videos from our programmes, events and community visits.",
+  "gallery.all": "All",
+  "gallery.photos": "Photos",
+  "gallery.videos": "Videos",
+  "gallery.showMore": "Show more",
+  "gallery.close": "Close",
+  "gallery.prev": "Previous",
+  "gallery.next": "Next",
+  "gallery.play": "Play video",
 } as const;
 
 const or: Record<keyof typeof en, string> = {
@@ -308,10 +317,44 @@ const or: Record<keyof typeof en, string> = {
   "donate.share": "WhatsApp ରେ ଶେୟାର୍ କରନ୍ତୁ",
   "donate.shareText":
     "ମୁଁ ସମ୍ଭବ ଫାଉଣ୍ଡେସନ୍‌କୁ ସମର୍ଥନ କରୁଛି – ମହିଳା ସଶକ୍ତିକରଣ, ବାଳିକା ଶିକ୍ଷା ଓ ସମାଜ କଲ୍ୟାଣ। ଆପଣ ମଧ୍ୟ ଯୋଗ ଦିଅନ୍ତୁ!",
-  "footer.office.registered": "ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ",
-  "footer.office.branch": "ଶାଖା କାର୍ଯ୍ୟାଳୟ",
-  "footer.address.registered": "ଗୁରୁଗ୍ରାମ, ହରିୟାଣା – 122001",
-  "footer.address.branch": "ଭଣ୍ଡାରୀପୋଖରୀ, ଭଦ୍ରକ,\nଓଡ଼ିଶା – 756120",
+  // Gallery
+  "nav.gallery": "ଗ୍ୟାଲେରୀ",
+  "gallery.eyebrow": "ଆମ ଗ୍ୟାଲେରୀ",
+  "gallery.title": "ମୂଲ୍ୟବାନ ମୁହୂର୍ତ୍ତ",
+  "gallery.sub": "ଆମର କାର୍ଯ୍ୟକ୍ରମ, ଅନୁଷ୍ଠାନ ଓ ସମୁଦାୟ ଭ୍ରମଣର ଫଟୋ ଓ ଭିଡିଓ।",
+  "gallery.all": "ସମସ୍ତ",
+  "gallery.photos": "ଫଟୋ",
+  "gallery.videos": "ଭିଡିଓ",
+  "gallery.showMore": "ଆଉ ଦେଖନ୍ତୁ",
+  "gallery.close": "ବନ୍ଦ କରନ୍ତୁ",
+  "gallery.prev": "ପୂର୍ବ",
+  "gallery.next": "ପରବର୍ତ୍ତୀ",
+  "gallery.play": "ଭିଡିଓ ଚଲାନ୍ତୁ",
 };
 
 export const translations: Record<Lang, Record<string, string>> = { en, or };
+
+/* ---------- Auto-translation (Google Cloud Translation) settings ---------- */
+
+/** false = the site shows ONLY the Odia text written in the `or` object above
+ *  (your own / client-approved translation). No API key, no Google call.
+ *  true  = use Google Cloud Translation first (needs the API key), and fall
+ *  back to the `or` text if Google is unavailable. */
+export const USE_AUTO_TRANSLATE = false;
+
+/** Languages that can be machine-translated from English via /api/translate.
+ *  To add one (e.g. Hindi): add "hi" to Lang, to this list and to the switcher. */
+export const TRANSLATABLE: Lang[] = ["or"];
+
+/** Keys whose non-English text is fixed by hand (brand and person names) and
+ *  must never be machine-translated. They use the manual text in the `or`
+ *  object above. */
+export const PINNED_KEYS: string[] = ["brand.name", "brand.sub", "featured.name", "featured.post"];
+
+/** Changes whenever any English text changes, so cached translations refresh. */
+export function contentVersion(): string {
+  const json = JSON.stringify(translations.en);
+  let hash = 5381;
+  for (let i = 0; i < json.length; i++) hash = ((hash << 5) + hash + json.charCodeAt(i)) | 0;
+  return (hash >>> 0).toString(36);
+}

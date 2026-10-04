@@ -25,3 +25,11 @@ html[lang="or"] h3 {
 html[lang="or"] * {
   letter-spacing: normal !important;
 }
+
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}

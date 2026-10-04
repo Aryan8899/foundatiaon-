@@ -126,7 +126,7 @@ export default function Header() {
         {/* Desktop navigation, centered between logo and button */}
         <nav
           aria-label="Main"
-          className="hidden flex-1 items-center justify-center gap-5 lg:flex xl:gap-9"
+          className="hidden flex-1 items-center justify-center gap-3.5 lg:flex xl:gap-7"
         >
           {NAV_LINKS.map((link) => (
             <NavItem

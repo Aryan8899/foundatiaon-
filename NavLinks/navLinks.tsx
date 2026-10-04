@@ -4,14 +4,13 @@ export interface NavLink {
   href: string;
 }
 
-// Single source of truth for header navigation.
-// To add or rename a page, edit this array only.
+// Single source of truth for header + footer navigation.
+// (The visible text comes from i18n/translations.ts -> "nav.<id>")
 export const NAV_LINKS: NavLink[] = [
   { id: "home", label: "Home", href: "#home" },
   { id: "about", label: "About Us", href: "#about" },
   { id: "work", label: "Our Work", href: "#work" },
   { id: "impact", label: "Impact", href: "#impact" },
-  { id: "events", label: "Events", href: "#events" },
-  { id: "get-involved", label: "Get Involved", href: "#get-involved" },
+  { id: "gallery", label: "Gallery", href: "#gallery" },
   { id: "contact", label: "Contact", href: "#contact" },
 ];
