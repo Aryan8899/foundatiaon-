@@ -46,7 +46,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
   { id: "p5", type: "image", src: "/gallery/pic5.jpeg", alt: "Sambhav Foundation community programme photo 5" },
 
   { id: "v5", type: "video", src: "/gallery/vid5.mp4", alt: "Sambhav Foundation community programme video 5" },
-{ id: "p6", type: "image", src: "/gallery/pic6.jpeg", alt: "Sambhav Foundation community programme photo 6" },
+  { id: "p6", type: "image", src: "/gallery/pic6.jpeg", alt: "Sambhav Foundation community programme photo 6" },
 
   { id: "v6", type: "video", src: "/gallery/vid6.mp4", alt: "Sambhav Foundation community programme video 6" },
   // Long video on YouTube instead (remove the // to use):
@@ -210,10 +210,9 @@ export default function Gallery() {
                   className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors
                     focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange
                     xl:px-[1.1vw] xl:py-[0.45vw] xl:text-[0.8vw]
-                    ${
-                      filter === id
-                        ? "border-brand-green bg-brand-green text-white"
-                        : "border-slate-300 bg-white text-brand-green hover:bg-white/60"
+                    ${filter === id
+                      ? "border-brand-green bg-brand-green text-white"
+                      : "border-slate-300 bg-white text-brand-green hover:bg-white/60"
                     }`}
                 >
                   {label}
@@ -327,9 +326,14 @@ export default function Gallery() {
                 src={current.src}
                 poster={current.poster}
                 controls
+                controlsList="nodownload noremoteplayback"
                 autoPlay
+                muted
                 playsInline
-                className="max-h-[78vh] max-w-[92vw] rounded-lg bg-black shadow-2xl"
+                onVolumeChange={(e) => {
+                  if (!e.currentTarget.muted) e.currentTarget.muted = true;
+                }}
+                className="no-volume max-h-[78vh] max-w-[92vw] rounded-lg bg-black shadow-2xl"
               />
             )}
             {current.type === "youtube" && (

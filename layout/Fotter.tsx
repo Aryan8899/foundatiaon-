@@ -75,10 +75,23 @@ const INITIATIVES = [
 
 const CONTACT = {
   email: "info@sambhavfoundation.org",
-  phone: "+91 98765 43210",
+  phone: "+91 92668 27482",
 };
 
-const OFFICES = [{ id: "registered" }, { id: "branch" }];
+/* Offices are written here directly (no translation keys needed).
+   To change an address, edit the text below. */
+const OFFICES = [
+  {
+    id: "registered",
+    label: { en: "Regd Office", or: "ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ" },
+    address: { en: "Gurgaon, Haryana", or: "ଗୁରୁଗ୍ରାମ, ହରିୟାଣା" },
+  },
+  {
+    id: "branch",
+    label: { en: "Branch Office", or: "ଶାଖା କାର୍ଯ୍ୟାଳୟ" },
+    address: { en: "Bhubaneswar, Odisha", or: "ଭୁବନେଶ୍ୱର, ଓଡ଼ିଶା" },
+  },
+];
 
 interface Social {
   label: string;
@@ -126,7 +139,7 @@ function ContactIcon({ children }: { children: ReactNode }) {
 /* ---------- Footer ---------- */
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -225,11 +238,9 @@ export default function Footer() {
                   </ContactIcon>
                   <address className="pt-0.5 not-italic">
                     <span className="block text-xs font-semibold uppercase tracking-wide text-brand-gold-light">
-                      {t(`footer.office.${office.id}`)}
+                      {office.label[lang]}
                     </span>
-                    <span className="mt-0.5 block whitespace-pre-line">
-                      {t(`footer.address.${office.id}`)}
-                    </span>
+                    <span className="mt-0.5 block">{office.address[lang]}</span>
                   </address>
                 </li>
               ))}

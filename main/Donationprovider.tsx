@@ -19,6 +19,31 @@ const MIN_AMOUNT = 10; // minimum donation in ₹
 const PRESET_AMOUNTS = [500, 1000, 2500, 5000];
 const PURPOSES = ["general", "women", "girl", "health", "rural", "finance", "youth"];
 
+/** >>> QR CODE SETTINGS <<<
+ *  Right now this is a DUMMY QR (public/donate-qr.png).
+ *  To use the real one: replace public/donate-qr.png with your UPI QR image
+ *  (keep the same file name) and change UPI_ID below to the real UPI ID. */
+const QR_IMAGE = "/donate-qr.png";
+const UPI_ID = "sambhavfoundation@upi"; // dummy, change later
+
+/* Text for the QR block is written here so it works without translation keys. */
+const QR_TEXT = {
+  en: {
+    or: "OR",
+    title: "Scan & donate with any UPI app",
+    sub: "Google Pay, PhonePe, Paytm, BHIM and more",
+    upi: "UPI ID",
+    alt: "QR code to donate to Sambhav Foundation",
+  },
+  or: {
+    or: "କିମ୍ବା",
+    title: "ଯେକୌଣସି UPI ଆପ୍ ରେ ସ୍କାନ୍ କରି ଦାନ କରନ୍ତୁ",
+    sub: "Google Pay, PhonePe, Paytm, BHIM ଇତ୍ୟାଦି",
+    upi: "UPI ID",
+    alt: "ସମ୍ଭବ ଫାଉଣ୍ଡେସନ୍‌କୁ ଦାନ ପାଇଁ QR କୋଡ୍",
+  },
+} as const;
+
 interface DonationData {
   name: string;
   email: string;
@@ -79,6 +104,42 @@ function Field({
           {error}
         </p>
       )}
+    </div>
+  );
+}
+
+/* ---------- QR block ---------- */
+
+function QrBlock() {
+  const { lang } = useLanguage();
+  const text = QR_TEXT[lang];
+
+  return (
+    <div className="mt-6">
+      {/* "OR" divider */}
+      <div className="flex items-center gap-3" aria-hidden="true">
+        <span className="h-px flex-1 bg-slate-200" />
+        <span className="text-xs font-bold tracking-wide text-slate-400">{text.or}</span>
+        <span className="h-px flex-1 bg-slate-200" />
+      </div>
+
+      <div className="mt-4 flex flex-col items-center gap-4 rounded-2xl border border-orange-200 bg-orange-50/60 p-4 text-center sm:flex-row sm:text-left">
+        <img
+          src={QR_IMAGE}
+          alt={text.alt}
+          width={144}
+          height={144}
+          className="h-36 w-36 shrink-0 rounded-xl border-4 border-white bg-white object-contain shadow-md"
+        />
+        <div>
+          <p className="text-sm font-bold text-brand-green">{text.title}</p>
+          <p className="mt-1 text-xs text-slate-600">{text.sub}</p>
+          <p className="mt-3 inline-block rounded-full bg-white px-3 py-1.5 text-xs text-slate-700 shadow-sm ring-1 ring-black/5">
+            <span className="font-semibold text-slate-500">{text.upi}: </span>
+            <span className="select-all font-semibold text-slate-900">{UPI_ID}</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -349,6 +410,9 @@ function DonationForm({ onClose }: { onClose: () => void }) {
         <Heart size={18} fill="currentColor" aria-hidden="true" />
         {submitLabel}
       </button>
+
+      {/* Scan-to-donate QR (dummy for now) */}
+      <QrBlock />
 
       {/* {DEMO_MODE && (
         <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-center text-xs text-amber-800">

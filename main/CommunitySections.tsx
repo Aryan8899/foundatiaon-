@@ -29,6 +29,7 @@ const FEATURED = {
   href: "#events",
   leftImage: "/sambhav.png",
   rightImage: "/guest.png",
+  guestLogo: "/bjym-logo-clean.png", // put bjym-logo-clean.png in your /public folder
   guest: {
     prefix: "With the support of",
     name: "Smt. Payal Singh",
@@ -110,7 +111,6 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function FeaturedInitiative() {
   const { t } = useLanguage();
-  const { guest } = FEATURED;
   return (
     <section
       aria-labelledby="featured-heading"
@@ -166,20 +166,48 @@ function FeaturedInitiative() {
         </div>
 
         {/* Right image + guest badge */}
-        <div className="relative h-72 lg:h-auto lg:w-[28%] lg:shrink-0">
-          <img
-            src={FEATURED.rightImage}
-            alt={t("featured.name")}
-            className="h-full w-full object-cover object-top lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
-          />
+        <div className="relative h-80 lg:h-auto lg:w-[28%] lg:shrink-0">
+          {/* Soft background with the diagonal edge */}
           <div
-            className="absolute bottom-4 left-4 max-w-[75%] rounded-xl bg-brand-gold-light px-4 py-3
-              text-brand-green shadow-lg lg:left-8 lg:-rotate-2
-              xl:bottom-[1vw] xl:left-[2vw] xl:rounded-[0.6vw] xl:px-[1vw] xl:py-[0.6vw]"
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-b from-orange-50 to-orange-100
+              lg:[clip-path:polygon(14%_0,100%_0,100%_100%,0_100%)]"
+          />
+
+          {/* Framed photo (arch shape with gold border) */}
+          <div
+            className="absolute inset-x-10 bottom-0 top-5 overflow-hidden rounded-t-[999px]
+              border-[5px] border-b-0 border-brand-gold-light bg-white shadow-lg
+              lg:inset-x-[18%] lg:top-6
+              xl:inset-x-[3vw] xl:top-[1vw] xl:border-[0.3vw]"
           >
-            <p className="text-[11px] font-medium xl:text-[0.6vw]">{t("featured.prefix")}</p>
-            <p className="text-lg font-extrabold leading-tight xl:text-[1.1vw]">{t("featured.name")}</p>
-            <p className="mt-0.5 text-[11px] font-semibold leading-snug xl:text-[0.6vw]">{t("featured.post")}</p>
+            <img
+              src={FEATURED.rightImage}
+              alt={t("featured.name")}
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
+
+          {/* Guest badge with BJYM logo */}
+          <div
+            className="absolute bottom-4 left-4 flex max-w-[88%] items-center gap-3 rounded-xl
+              border-2 border-white/70 bg-brand-gold-light px-3 py-2.5 text-brand-green shadow-lg
+              lg:left-6 lg:-rotate-2
+              xl:bottom-[1vw] xl:left-[1vw] xl:gap-[0.7vw] xl:rounded-[0.6vw] xl:border-[0.15vw]
+              xl:px-[0.8vw] xl:py-[0.6vw]"
+          >
+            <img
+              src={FEATURED.guestLogo}
+              alt="BJYM logo"
+              className="h-12 w-12 shrink-0 rounded-full object-contain shadow-md xl:h-[3vw] xl:w-[3vw]"
+            />
+            <div>
+              <p className="text-[11px] font-medium xl:text-[0.6vw]">{t("featured.prefix")}</p>
+              <p className="text-lg font-extrabold leading-tight xl:text-[1.1vw]">{t("featured.name")}</p>
+              <p className="mt-0.5 text-[11px] font-semibold leading-snug xl:text-[0.6vw]">
+                {t("featured.post")}
+              </p>
+            </div>
           </div>
         </div>
       </div>

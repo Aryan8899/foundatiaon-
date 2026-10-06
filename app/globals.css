@@ -33,3 +33,10 @@ html[lang="or"] * {
     cursor: pointer;
   }
 }
+
+/* Gallery videos: hide the volume controls (Chrome, Edge, Safari) */
+video.no-volume::-webkit-media-controls-mute-button,
+video.no-volume::-webkit-media-controls-volume-slider,
+video.no-volume::-webkit-media-controls-volume-slider-container {
+  display: none !important;
+}
